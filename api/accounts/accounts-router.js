@@ -23,7 +23,7 @@ router.post('/', [checkAccountPayload, checkAccountNameUnique], (req, res, next)
   // DO YOUR MAGIC
   Account.create(req.body)
     .then(newAccount => {
-      res.json(newAccount)
+      res.status(201).json(newAccount)
     })
     .catch(next)
 })
