@@ -27,7 +27,7 @@ exports.checkAccountNameUnique = (req, res, next) => {
     .then(accounts => {
       const account = accounts.find(acc => acc.name === req.body.name)
       if (account) {
-        next({ status: 400, message: 'name must be unique!' })
+        next({ status: 400, message: 'that name is taken' })
       } else {
         next()
       }
@@ -42,7 +42,7 @@ exports.checkAccountId = (req, res, next) => {
         req.account = account
         next()
       } else {
-        next({ status:404, message: 'account not found!' })
+        next({ status:404, message: 'account not found' })
       }
     }).catch(next)
 }
